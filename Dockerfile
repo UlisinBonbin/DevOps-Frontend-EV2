@@ -16,4 +16,6 @@ FROM nginxinc/nginx-unprivileged:alpine
 # Vite genera los archivos compilados en la carpeta "dist", los pasamos a Nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 8080
