@@ -48,20 +48,10 @@ jobs:
         run: |
           aws eks update-kubeconfig --region us-east-1 --name innovatech-eks
 
-      # 5. Inyectar secretos de GitHub dentro del archivo YAML
-      - name: Configurar secretos en Kubernetes
-        env:
-          DB_ENDPOINT: ${{ secrets.DB_ENDPOINT }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-        run: |
-          # Abre el archivo, reemplaza los $VALORES por los secretos y sobrescribe el archivo
-          envsubst < k8s/innovatech-secret.yaml > tmp.yaml && mv tmp.yaml k8s/innovatech-secret.yaml
+    
 
       # 6. Desplegar los cambios
-      - name: Desplegar nueva versión en Kubernetes
-        run: |
-          kubectl apply -f k8s/
-          kubectl rollout restart deployment/frontend-app
+      - name: Desplegar frontend
+  run: |
+    kubectl apply -f k8s/
+    kubectl rollout restart deployment/frontend-deployment
