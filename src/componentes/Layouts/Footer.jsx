@@ -74,7 +74,7 @@ function Footer() {
             <a href="#" className="hover:underline">
               ITPCARGO™
             </a>
-            . Todos los derechos reservados-cambio de prueba, cambios de prueba OwO UWU, otra mas, hola.
+            . Todos los derechos reservados-cambio de prueba, cambios de prueba OwO UWU, cambio final.
           </span>
         </div>
       </div>
